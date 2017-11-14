@@ -1,0 +1,59 @@
+    public static int triangle(int nth) {
+        int out = (int) (nth * (nth + 1) * 0.5);
+        return out;
+    }
+
+    public static String[] readFile() {
+        //  ArrayList<String>
+        FileReader fileReader = null;
+        try {
+            fileReader = new FileReader("words.txt");
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            String line = bufferedReader.readLine();
+            String[] words = (line.replace("\"", "")).split(",");
+            return words;
+
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(PorjectEuler.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(PorjectEuler.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                fileReader.close();
+            } catch (IOException ex) {
+                Logger.getLogger(PorjectEuler.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return null;
+    }
+
+    public static int score(String word) {
+        int score = 0;
+        char[] chars = word.toLowerCase().toCharArray();
+        for (int x : chars) {
+            score += x - 96;
+        }
+        return score;
+    }
+
+    public static void main(String[] args) {
+        ArrayList<Integer> triangleNums = new ArrayList();
+        for (int x = 1; x <= 1000; x++) {
+            triangleNums.add(triangle(x));
+        }
+        
+        String[] words = readFile();
+        System.out.println(score("sky"));
+        if (words == null) {
+            System.out.println("NOT FOUND");
+            System.exit(1);
+        }
+        int count=0;
+        for(String word:words){
+            if(triangleNums.contains(score(word))){
+                System.out.println("The word "+word+" is a triangle number");
+                count++;
+            }
+        }
+        System.out.println(count);
+    }

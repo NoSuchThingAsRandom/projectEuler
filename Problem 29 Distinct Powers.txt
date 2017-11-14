@@ -1,0 +1,18 @@
+    public static ArrayList<BigInteger> terms = new ArrayList();
+
+    public static void main(String[] args) {
+        BigInteger current;
+        for (int a = 2; a <= 100; a++) {
+            for (int b = 2; b <= 100; b++) {
+                current= BigInteger.valueOf(a);
+                current=current.pow(b);
+                if(terms.contains(current)==false){
+                    System.out.println("NEW TERM    "+current);
+                    terms.add(current);
+                }
+            }
+        }
+        Collections.sort(terms);
+        System.out.println(terms);
+        System.out.println(terms.size());
+    }

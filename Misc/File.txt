@@ -1,0 +1,43 @@
+import java.io.*;
+import java.nio.file.Path;
+import java.util.*;
+public class test {
+	public static String text=null;
+	public static void write(String keys) throws IOException{
+		  BufferedWriter outputWriter = null;
+		  outputWriter = new BufferedWriter(new FileWriter(keys));
+		  outputWriter.write(text);
+		  outputWriter.flush();
+		  outputWriter.close();
+	}
+
+	public static void main(String[] args) throws  IOException{
+		Scanner input=new Scanner(System.in);
+		System.out.println("Enter Message");
+		text=input.nextLine();
+		String path="H:/Eclipse";
+		
+		FileWriter write = new FileWriter( path,name);
+
+
+		test.write(text);
+		String line=null;
+		String FileName ="keys";
+	       FileReader fileReader = new FileReader(FileName);
+           BufferedReader bufferedReader = new BufferedReader(fileReader);
+           line = bufferedReader.readLine();
+           System.out.println(bufferedReader.readLine());
+		
+		
+		
+		
+		int x=1;
+		test.write(text);
+		Scanner s = new Scanner(new File("keys"));
+		String[] array = new String[s.nextInt()];
+		for (int i = 0; i < array.length; i++){
+		    array[i] = s.nextLine();
+		}
+		System.out.println(array[0]);
+	}
+}

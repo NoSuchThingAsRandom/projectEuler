@@ -1,0 +1,13 @@
+    public static boolean checkPrime(int number){
+        if(number%2==0){
+            return false;
+        }else{
+            for(int x=3;x<Math.sqrt(number);x=x+2){
+                if(number%x==0){
+                    return false;
+                }
+            }
+            return true;
+        }
+        
+    }

@@ -1,0 +1,29 @@
+   public static void main(String[] args) {
+		int x=0;
+		long currentTri=0;
+                int numDiv=0;
+		while(numDiv<500){	
+                        currentTri=currentTri+x;
+			numDiv=numDivisor(currentTri);
+			System.out.println("The "+x + " is "+currentTri+" and it has " + numDiv + " divisors");
+			if(numDiv>=500){
+				System.out.println("FOUND "+currentTri);
+				break;
+			}
+			x++;
+		}
+		System.out.println(x);
+	}
+	
+	public static int numDivisor(long number){
+		int count=0;
+		for(int x=1; x<=(Math.sqrt(number));x++){
+			if(number%x==0){
+				count=count+2;
+			}
+		}
+		count=count+2;
+		
+		
+		return count;
+	}

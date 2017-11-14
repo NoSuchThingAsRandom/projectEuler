@@ -1,0 +1,19 @@
+public static void main(String[] args) {
+        int pal = 1;
+        int num;
+        // String[] chars;
+        for (int x = 999; x > 0; x--) {
+            for (int y = 999; y > 0; y--) {
+                num = x * y;
+                if (pal < num) {
+                    int len = Integer.toString(num).length();
+                    String[] chars = {Integer.toString(num).substring(0, len), Integer.toString(num).substring(0, len)};
+                    if (chars[0].equals((new StringBuilder(chars[1]).reverse()).toString())) {
+                        pal = num;
+                    }
+                }
+            }
+        }
+        System.out.println(pal);
+
+    }

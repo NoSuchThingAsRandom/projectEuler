@@ -1,0 +1,17 @@
+    public static void main(String[] args) {
+        String[] num;
+        int count=0;
+        int total=0;
+        for(int x=2;x<1000000;x++){
+            num=Integer.toString(x).split("");
+            for(String s:num){
+                count+=Math.pow(Integer.parseInt(s),5);
+            }
+            if(count==x){
+                System.out.println("SUCCESS     "+x);
+                total+=count;
+            }
+            count=0;
+        }
+        System.out.println(total);
+    }

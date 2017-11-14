@@ -1,0 +1,24 @@
+public static boolean checkPrime(int number){
+        if(number%2==0){
+            return false;
+        }else{
+            for(int x=3;x<=Math.sqrt(number);x=x+2){
+                if(number%x==0){
+                    return false;
+                }
+            }
+            return true;
+        }
+    }
+        
+    public static void main(String[] args) {
+        int count=1;
+        for(int x=3;count!=10001;x=x+2){
+            if(checkPrime(x)==true){
+                count++;
+            }
+            if(count==10001){
+                System.out.println("The 10001st prime is "+x);
+            }
+        }
+    }

@@ -1,0 +1,15 @@
+    public static void main(String[] args) {
+        boolean div=true;
+        for(int x=1;true;x++){
+            div=true;
+            for(int y=1;y<=20;y++){
+                if(x%y!=0){
+                    div=false;
+                }
+            }
+            if(div==true){
+                System.out.println("The number is "+x);
+                break;
+            }
+        }
+    }

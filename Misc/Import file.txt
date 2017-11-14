@@ -1,0 +1,22 @@
+    public static String[] readFile(){
+        FileReader fileReader = null;
+        try {
+            fileReader = new FileReader("D://Prime//names.txt");
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            String line=bufferedReader.readLine();
+            String[] names=(line.replace("\"", "")).split(",");
+            return names;
+      //      System.out.println(names[0]);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(SecurityBreak.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(SecurityBreak.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                fileReader.close();
+            } catch (IOException ex) {
+                Logger.getLogger(SecurityBreak.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return null;
+}

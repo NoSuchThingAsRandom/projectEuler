@@ -1,0 +1,46 @@
+    public static String[] letters={"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"};
+    public static String[] names;
+    
+    public static void readFile(){
+        FileReader fileReader = null;
+        try {
+            fileReader = new FileReader("D://Prime//names.txt");
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            String line=bufferedReader.readLine();
+            names=(line.replace("\"", "")).split(",");
+      //      System.out.println(names[0]);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(PorjectEuler.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(PorjectEuler.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                fileReader.close();
+            } catch (IOException ex) {
+                Logger.getLogger(PorjectEuler.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+    public static int calScore(String name){
+        int score=0;
+        String[] chars=name.split("");
+        for(int x=0;x<chars.length;x++){
+            for(int y=0;y<letters.length;y++){
+                if(letters[y].equals(chars[x].toLowerCase())){
+                    score=score+1+y;
+                }
+            }
+        }
+        return score;
+    }
+
+
+    public static void main(String[] args) {
+        readFile();
+        Arrays.sort(names);
+        int  total=0;
+        for(int x=0;x<names.length;x++){
+            total=total+((calScore(names[x]))*(x+1));
+        }
+        System.out.println(total);
+    }

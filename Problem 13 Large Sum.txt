@@ -1,0 +1,34 @@
+public static ArrayList<String> numbers=new ArrayList();
+    
+    public static void readFile(){
+        FileReader fileReader = null;
+        try {
+            fileReader = new FileReader("D://Prime//NumberList.txt");
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            String line;
+            while((line= bufferedReader.readLine())!=null){
+                numbers.add(line);
+          //      System.out.println(line);
+            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(PorjectEuler.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(PorjectEuler.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                fileReader.close();
+            } catch (IOException ex) {
+                Logger.getLogger(PorjectEuler.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+    
+    public static void main(String[] args) {
+        readFile();
+        BigInteger total=BigInteger.valueOf(0);
+        for(int x=0;x<numbers.size();x++){
+            total=total.add(new BigInteger(numbers.get(x)));
+        }
+        System.out.println(total.toString().substring(0,10));
+
+    }

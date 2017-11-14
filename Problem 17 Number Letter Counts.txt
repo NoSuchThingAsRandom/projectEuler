@@ -1,0 +1,63 @@
+private static final String[] twenty = {
+        "", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine",
+        "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"};
+    private static final String[] tens = {"", "ten", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"};
+
+    public static String generator(int number) {
+        StringBuilder sb = new StringBuilder();
+
+        String word = "";
+        String[] temp;
+        if (number < 20) {
+            return twenty[number];
+        }
+
+        temp = Integer.toString(number).split("");
+        switch (temp.length) {
+            case 2:
+                word = tens[Integer.parseInt(temp[0])] + " " + twenty[Integer.parseInt(temp[1])];
+                break;
+            case 3:
+                sb.append(twenty[Integer.parseInt(temp[0])]);
+                if(temp[1].equals("1")){
+                    sb.append(" hundred and ");
+                    sb.append(twenty[Integer.parseInt(temp[2])+10]);
+                }else if(!(temp[1].equals("0"))){
+                    sb.append(" hundred and ");
+                    sb.append(tens[Integer.parseInt(temp[1])]);
+                    sb.append(" ");
+                    sb.append(twenty[Integer.parseInt(temp[2])]);
+                }else if(!(temp[2].equals("0"))){
+                    sb.append(" hundred and ");
+                    sb.append(twenty[Integer.parseInt(temp[2])]);
+                }else{
+                    sb.append(" hundred");
+                }
+                word=sb.toString();
+                break;
+            case 4:
+                word="one thousand";
+                break;
+        }
+
+        return word;
+    }
+
+    public static void main(String[] args) {
+        int goTo = 1000;
+        int length = 0;
+             //         System.out.println(generator(342)+" has "+(generator(342).replace(" ", "").length()));
+               //       System.out.println(generator(115)+" has "+(generator(115).replace(" ", "").length()));
+        for (int x = 1; x <= goTo; x++) {
+            String cal = generator(x);
+         //   System.out.println(x+" "+cal);
+            cal=cal.replace(" ", "");
+            System.out.println(x+" "+cal);
+            length = length + cal.length();
+            //  System.out.println(generator(4375));
+            //  System.out.println(generator(4375));
+        }
+        System.out.println(length);
+    }
+
+}

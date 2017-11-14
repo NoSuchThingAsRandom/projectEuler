@@ -1,0 +1,13 @@
+    public static void main(String[] args) {
+        BigInteger sum=BigInteger.valueOf(1);
+        for(int x=1;x<=100;x++){
+            sum=sum.multiply(BigInteger.valueOf(x));
+        }
+        String[] chars=sum.toString().split("");
+        long total=0;
+        for(int x=0;x<chars.length;x++){
+            total=total+Integer.parseInt(chars[x]);
+        }
+        System.out.println(sum);
+        System.out.println(total);
+    }

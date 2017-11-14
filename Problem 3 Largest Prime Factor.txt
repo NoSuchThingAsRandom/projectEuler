@@ -1,0 +1,25 @@
+    public static boolean checkPrime(int number){
+        if(number%2==0){
+            return false;
+        }else{
+            for(int x=3;x<Math.sqrt(number);x=x+2){
+                if(number%x==0){
+                    return false;
+                }
+            }
+            return true;
+        }
+        
+    }
+
+    public static void main(String[] args) {
+        int factor=0;
+        for(int x=1;x<=Math.sqrt(600851475143l);x++){
+            if(600851475143l%x==0){
+                if(checkPrime(x)==true){
+                    factor=x;
+                }
+            }
+        }
+        System.out.println(factor);
+    }

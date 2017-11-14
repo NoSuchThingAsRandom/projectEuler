@@ -1,0 +1,25 @@
+	public static void newPrime(int goTo){
+		BitSet bs =new BitSet(goTo);
+		bs.set(0, goTo,true);
+		for(int x=2;x<Math.sqrt(goTo); x++){
+			//System.out.println("Xn"+x);
+			if(bs.get(x)==true){
+				//System.out.println("X"+x);
+				for(int y=2;y*x<=goTo;y++){
+					//System.out.println("y="+y+"y*x="+y*x);
+					bs.set((y*x), false);
+				}
+			}
+		}
+		System.out.println("DONE");
+		long sum=2;
+		//System.out.println(bs.get(4));
+		for(int z=3;z<goTo;z++){
+			if(bs.get(z)==true){
+				//System.out.println(bs.get(z)+" "+(z));
+				sum=sum+z;
+			}
+		}
+		System.out.println(sum);
+		//bs.set(2, false);
+	}

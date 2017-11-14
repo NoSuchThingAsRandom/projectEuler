@@ -1,0 +1,15 @@
+    public static void main(String[] args) {
+        BigInteger total=BigInteger.valueOf(1);
+        for(int x=0;x<1000;x++){
+            total=total.multiply(BigInteger.valueOf(2));
+        }
+        String[] nums=total.toString().split("");
+        long sum=0;
+        for(int x=0; x<nums.length;x++){
+            sum=Integer.parseInt(nums[x])+sum;
+        }
+        System.out.println(total);
+        System.out.println(sum);
+
+    }
+}

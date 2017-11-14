@@ -1,0 +1,38 @@
+    public static ArrayList<BigInteger> numbers = new ArrayList();
+
+    public static void main(String[] args) {
+        BigInteger current;
+        BigInteger total=BigInteger.ZERO;
+        String[] temp;
+        
+        for (int a = 3; a <= 10000000; a++) {
+            temp=Integer.toString(a).split("");
+       //     System.out.println(a);
+            for (int b = 0; b <temp.length; b++) {
+                current=calc(Integer.parseInt(temp[b]));
+                total=total.add(current);
+                
+            }
+         //   System.out.println("Total "+total);
+            if(total.equals(BigInteger.valueOf(a))){
+                numbers.add(total);
+                System.out.println(total);
+            }
+            total=BigInteger.ZERO;
+        }
+        System.out.println();
+        System.out.println(numbers);
+        BigInteger out=BigInteger.ZERO;
+        for(int x=0;x<numbers.size();x++){
+            out=out.add(numbers.get(x));
+        }
+        System.out.println(out);
+    }
+    public static BigInteger calc(int number){
+        BigInteger result=BigInteger.valueOf(1);
+        
+        for(long x=2;x<=number;x++){
+            result=result.multiply(BigInteger.valueOf(x));
+        }
+        return result;
+    }

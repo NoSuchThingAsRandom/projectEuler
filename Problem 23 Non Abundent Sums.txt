@@ -1,0 +1,50 @@
+public static boolean abudnentNum(int num){
+        ArrayList<Integer>factors=new ArrayList();
+        for(int x=1;x<(num);x++){
+            if(num%x==0){
+                factors.add(x);
+                //System.out.println(x);
+            }
+        }
+        int count=0;
+        for(int a:factors){
+            count+=a;
+ 
+        }
+        if(count>num){
+            return true;
+        }
+    //  System.out.println(count);
+ 
+        return false;
+    }
+    public static void main(String[] args) {
+    //  System.out.println(28+" :"+perfectNum(28))
+        ArrayList<Integer> abundent=new ArrayList();
+        int count=0;
+        long start=System.currentTimeMillis();
+        for(int x=1;x<28123;x++){
+            if(abudnentNum(x)==true){
+                System.out.println(x+" true");
+                abundent.add(x);
+                count++;
+            }
+        }
+        BitSet bs=new BitSet(28123);
+        bs.set(0,28123,false);
+        System.out.println(count);
+        for(int a:abundent){
+            for(int b:abundent){
+                bs.set(a+b,true);
+            }
+        }
+        int out=0;
+        for(int x=0;x<28123;x++){
+            if(bs.get(x)==false){
+                out+=x;
+                System.out.println("FALSE: "+x);
+            }
+             
+        }
+        System.out.println(out);
+    }

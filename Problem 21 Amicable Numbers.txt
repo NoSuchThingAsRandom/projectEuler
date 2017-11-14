@@ -1,0 +1,23 @@
+    public static int sumDiv(int number) {
+        int sum = 1;
+        for (int x = 2; x <= Math.sqrt(number); x++) {
+            if (number % x == 0) {
+                sum = sum + (number / x);
+                sum = sum + x;
+            }
+        }
+        return sum;
+    }
+
+    public static void main(String[] args) {
+        int a = 1;
+        int b = 1;
+        int total = 0;
+        for (a = 1; a < 10000; a++) {
+            b = sumDiv(a);
+            if (sumDiv(b) == a && a != b) {
+                total = total + a;
+            }
+        }
+        System.out.println(total);
+    }
