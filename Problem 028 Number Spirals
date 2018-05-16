@@ -1,0 +1,4 @@
+total=1
+for x in range(3,1002,2):
+    total+=((x**2)*4)-(6*(x-1))
+print(total)
